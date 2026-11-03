@@ -1,0 +1,446 @@
+These are the three most important graphs in your K-Means Clustering practical. I'll explain each one in simple English, including what to say in your viva.
+
+# 1. Correlation Heatmap
+
+[Product Sales Dataset (2023-2024) | Kaggle](https://images.openai.com/static-rsc-4/Bwuv-4ob0eaNJA0reniF2u_6OsYyHux32Qb1iSVuWKTh-ym6kDmEjQMQy0zr6JrtGs30A2qjJ-eS5P8cr7j4pmz4icMM2AJ_uNv1oopk5my1SaLFJ-TExrKBUNpEY4xrEAJCcHKO-TPMEwI6SYxN0VFBTULRIDW1iEdIF4L4bx8?purpose=inline)
+
+[kaggle.com](https://www.kaggle.com/datasets/yashyennewar/product-sales-dataset-2023-2024?utm_source=chatgpt.com)
+
+What is a heatmap?
+
+A heatmap is a graphical representation that shows the correlation between different numerical columns in a dataset.
+
+How to read this graph:
+
+- X-axis: Dataset columns.
+- Y-axis: Dataset columns.
+- Values range from -1 to +1.
+- +1 means perfect positive correlation.
+- -1 means perfect negative correlation.
+- 0 means no linear correlation.
+
+Important values from your graph:
+
+| Columns                 | Correlation | Meaning              |
+| ----------------------- | ----------- | -------------------- |
+| ORDERNUMBER & YEAR_ID   | 0.90        | Strong positive      |
+| QTR_ID & MONTH_ID       | 0.98        | Very strong positive |
+| PRICEEACH & MSRP        | 0.67        | Positive             |
+| PRICEEACH & SALES       | 0.66        | Positive             |
+| QUANTITYORDERED & SALES | 0.55        | Positive             |
+| YEAR_ID & MONTH_ID      | -0.43       | Negative             |
+
+What is the diagonal value 1.00?
+
+It means every column has a perfect correlation with itself.
+
+Viva questions:
+
+Q. What is correlation?
+
+Ans. Correlation measures the relationship between two numerical variables.
+
+Q. What does 0.98 mean?
+
+Ans. It indicates a very strong positive relationship between two variables.
+
+Q. Why do we use a heatmap?
+
+Ans. To understand relationships between numerical features.
+
+Q. What does negative correlation mean?
+
+Ans. When one variable increases, the other tends to decrease.
+
+# 2. Elbow Method Graph
+
+[NBA Play Style Evolution](https://images.openai.com/static-rsc-4/YElnfMOsfcMq9zb347BbdNqzrFD60HbuAvKzLFH5u_v8To2y8CB0qSOYOLdU1UacCIivcKcS8H7YwjZWGNVQrLUhnDaS5Mu7FBjNNYXfIKUlfCZgAJQc8LtV2FHbcfWXMMXzKdwG2yQnBgRXgoR_inEG8o83xVaMMUuVKJWCVH0?purpose=inline)
+
+[abhayk23.github.io](https://abhayk23.github.io/NBA-Playstyle-Evolution/?utm_source=chatgpt.com)
+
+What is this graph?
+
+The Elbow Method is used to find the optimal number of clusters (K) in K-Means clustering.
+
+Understanding your graph:
+
+- X-axis: Number of clusters (1 to 10).
+- Y-axis: Inertia.
+- The line decreases as the number of clusters increases.
+- Initially, inertia decreases rapidly.
+- After approximately K = 3, the decrease becomes slower.
+
+Selected K = 3
+
+Why do we select K = 3?
+
+Because around K = 3, the curve starts bending and becomes comparatively flatter. This is called the elbow point.
+
+What is inertia?
+
+Inertia is the sum of squared distances between each data point and its nearest cluster centroid.
+
+Viva questions:
+
+Q. Why do we use the Elbow Method?
+
+Ans. To find the optimal number of clusters.
+
+Q. What is inertia?
+
+Ans. It measures how closely data points are grouped around their centroids.
+
+Q. What happens when K increases?
+
+Ans. Inertia generally decreases.
+
+Q. What is the elbow point?
+
+Ans. It is the point where the decrease in inertia starts slowing down.
+
+# 3. K-Means Clustering Scatter Plot
+
+[クラスタリングを丁寧に。｜機械学習のメモや学習内容のアウトプット](https://images.openai.com/static-rsc-4/rE72JkKVGLOHdWQ31HRCJp0pKdTotSZyPg2de2MtwP1qJt9g80PgPZpsYXAa5ILjVg46FA-YZ26wC6Jz6c7qm2oP7UfLtT9I_vh_9TaQPrsyGmYb2MZmOXqdLLJAT1mFZHnDElm2au5DGCTc5zxP8RO60qeeU7eT-PD1lVdFlDM?purpose=inline)
+
+[note.com](https://note.com/herahera_/n/n8aa0395cb891?utm_source=chatgpt.com)
+
+This is the final output of your practical.
+
+This graph shows how the dataset is divided into three different clusters.
+
+Understanding the graph:
+
+| Graph element    | Meaning   |
+| ---------------- | --------- |
+| X-axis           | PRICEEACH |
+| Y-axis           | MSRP      |
+| Light pink dots  | Cluster 0 |
+| Purple dots      | Cluster 1 |
+| Dark purple dots | Cluster 2 |
+| Red stars        | Centroids |
+
+What are centroids?
+
+Centroids are the center points of each cluster. They represent the mean position of the data points belonging to that cluster.
+
+Your actual cluster centers:
+
+| Cluster | PRICEEACH | MSRP   |
+| ------- | --------- | ------ |
+| 0       | 62.49     | 60.72  |
+| 1       | 97.60     | 158.72 |
+| 2       | 94.04     | 102.89 |
+
+Explain the three clusters:
+
+- Cluster 0: Generally lower-priced products.
+- Cluster 1: Products with higher MSRP.
+- Cluster 2: Products with relatively high selling prices and medium-to-high MSRP.
+
+Viva questions:
+
+Q. Why are different colors used?
+
+Ans. To distinguish different clusters.
+
+Q. What do red stars represent?
+
+Ans. They represent the centroids of the clusters.
+
+Q. What does the X-axis represent?
+
+Ans. PRICEEACH.
+
+Q. What does the Y-axis represent?
+
+Ans. MSRP.
+
+Q. How many clusters are created?
+
+Ans. Three clusters.
+
+# 4. How to explain all three graphs to your external examiner
+
+Remember this short explanation:
+
+Viva-ready answer
+
+"First, I used a correlation heatmap to understand the relationship between numerical columns in the dataset.
+
+Second, I used the Elbow Method to identify the optimal number of clusters. Based on the graph, I selected K = 3.
+
+Finally, I applied K-Means clustering and plotted a scatter graph using PRICEEACH and MSRP. Different colors represent three clusters, and red stars represent their centroids."
+
+## 5. Important extra questions your external may ask
+
+| Question                    | Short answer                                                   |
+| --------------------------- | -------------------------------------------------------------- |
+| What is MSRP?               | Manufacturer's Suggested Retail Price.                         |
+| What is PRICEEACH?          | Selling price of each product.                                 |
+| What is a scatter plot?     | A graph showing relationships between two numerical variables. |
+| What is K-Means?            | An unsupervised clustering algorithm.                          |
+| Why select two columns?     | To perform clustering using selling price and MSRP.            |
+| What is `cluster_centers_`? | It returns the coordinates of cluster centroids.               |
+| What is `y_kmeans`?         | It stores the cluster label assigned to each data point.       |
+
+One important point: Correlation does not prove causation. Also, your K-Means model uses only PRICEEACH and MSRP, not all the columns shown in the heatmap.
+
+My suggestion: Learn the explanation of the three graphs first. Your external can easily ask you to explain any one of these graphs during the practical viva.
+
+
+# Viva Preparation – B6: K-Means Clustering on Sales Dataset
+
+I have gone through your complete PDF (4 pages). Let's prepare for your practical viva using simple English, short answers, code explanations, and important questions.
+
+Your practical uses the K-Means Clustering algorithm to group sales data based on `PRICEEACH` and `MSRP`.
+
+## 1. Aim of the practical
+
+To perform K-Means clustering on a sales dataset and group products based on their selling price and manufacturer's suggested retail price (MSRP).
+
+## 2. Understand the practical
+
+Step 1
+
+Import libraries
+
+```
+import numpy as npimport pandas as pdimport matplotlib.pyplot as pltimport seaborn as sns
+```
+
+- NumPy: Numerical operations.
+- Pandas: Data handling.
+- Matplotlib: Data visualization.
+- Seaborn: Statistical graphs.
+
+Step 2
+
+Load dataset
+
+```
+df = pd.read_csv('sales_data_sample.csv',                 encoding='latin1')df.head()
+```
+
+- Reads the CSV file.
+- `head()` displays the first 5 rows.
+- Dataset contains 2823 rows and 25 columns.
+
+Step 3
+
+Check dataset information
+
+```
+df.info()df.describe()
+```
+
+- `info()` displays columns, data types and null values.
+- `describe()` displays statistical information like mean, standard deviation, minimum and maximum.
+
+Step 4
+
+Correlation heatmap
+
+```
+sns.heatmap(df.corr(), annot=True)
+```
+
+A heatmap shows the correlation between numerical columns.
+
+[Heatmap in Seaborn - Shiksha Online](https://images.openai.com/static-rsc-4/opVPI1Y6paom86vfJMzbcksJPfB-obcbWh_NPQJalPiPARlRUc_pTj_elxdQqMI8eY-2MBu_dsqxx5kXEjij1jY7WNEY3e7JK-xHMstH4YSPxTq5K_6l13UvSeFnVTHCkaLfWRJ6mFTHvHfrWxfYCR3OeHMg3y2ht9QWTD_ffNw?purpose=inline)
+
+[shiksha.com](https://www.shiksha.com/online-courses/articles/heatmap-in-seaborn/?utm_source=chatgpt.com)
+
+Step 5
+
+Select required columns
+
+```
+df = df[['PRICEEACH', 'MSRP']]
+```
+
+We select only two columns for clustering.
+
+- PRICEEACH: Actual selling price.
+- MSRP: Manufacturer's suggested retail price.
+
+Step 6
+
+Check missing values
+
+```
+df.isna().any()
+```
+
+Checks whether columns contain missing values.
+
+In this practical, both selected columns have no missing values.
+
+Step 7
+
+Apply K-Means
+
+```
+from sklearn.cluster import KMeansinertia = []for i in range(1, 11):    clusters = KMeans(        n_clusters=i,        init='k-means++',        random_state=42    )    clusters.fit(df)    inertia.append(clusters.inertia_)
+```
+
+This code calculates inertia for 1 to 10 clusters to find the optimal number of clusters.
+
+## 3. Important diagrams and graphs
+
+### A. Elbow Method (Page 3)
+
+[NBA Play Style Evolution](https://images.openai.com/static-rsc-4/YElnfMOsfcMq9zb347BbdNqzrFD60HbuAvKzLFH5u_v8To2y8CB0qSOYOLdU1UacCIivcKcS8H7YwjZWGNVQrLUhnDaS5Mu7FBjNNYXfIKUlfCZgAJQc8LtV2FHbcfWXMMXzKdwG2yQnBgRXgoR_inEG8o83xVaMMUuVKJWCVH0?purpose=inline)
+
+[abhayk23.github.io](https://abhayk23.github.io/NBA-Playstyle-Evolution/?utm_source=chatgpt.com)
+
+What does it show?
+
+- X-axis: Number of clusters (K).
+- Y-axis: Inertia.
+- Inertia measures the sum of squared distances between data points and their cluster centers.
+- We select K at the elbow point, where the decrease in inertia starts slowing down.
+
+In your practical, K = 3 is selected.
+
+### B. K-Means scatter plot (Page 4)
+
+[K-means Clustering  : Understanding Algorithm with animated images with single line of code(Python) | Medium](https://images.openai.com/static-rsc-4/1FE0R9k8azRcgG9tfaq95_yD54132vsdMIiN8HJqU6D_BrlyD-NUmLPJ6KB29F-ih55MjrT9Jd5G76ijTK_7S3D4AmL09UUIUlBxqi6R-Bl_GwL9Cm6aiQGxlotWvlytWqvSHXLdwF0KSqlmMdVAMeQsZaA_se58lKxfjq6y8Oc?purpose=inline)
+
+[halderadhika91.medium.com](https://halderadhika91.medium.com/k-means-clustering-understanding-algorithm-with-animation-and-code-6e644993afab?utm_source=chatgpt.com)
+
+Explanation:
+
+- X-axis: PRICEEACH.
+- Y-axis: MSRP.
+- Different colors represent three clusters.
+- Red stars represent centroids (cluster centers).
+
+### C. Cluster centers (Page 4)
+
+Your practical gives these values:
+
+| Cluster | PRICEEACH | MSRP   |
+| ------- | --------- | ------ |
+| 0       | 62.49     | 60.71  |
+| 1       | 97.59     | 158.72 |
+| 2       | 94.03     | 102.88 |
+
+These are the average center positions of the three clusters.
+
+## 4. Most important viva questions and answers
+
+Q1. What is Machine Learning?
+
+Machine Learning is a branch of AI that allows computers to learn from data and make predictions or decisions.
+
+Q2. What is clustering?
+
+Clustering is an unsupervised learning technique that groups similar data points together.
+
+Q3. What is K-Means clustering?
+
+K-Means is an unsupervised machine learning algorithm that divides data into K clusters based on similarity.
+
+Q4. Is K-Means supervised or unsupervised?
+
+Unsupervised learning.
+
+Q5. Why is it called K-Means?
+
+Because it divides data into K clusters and calculates the mean (centroid) of each cluster.
+
+Q6. What is a centroid?
+
+A centroid is the center point of a cluster, calculated using the mean of its data points.
+
+Q7. What is K in K-Means?
+
+K represents the number of clusters.
+
+Q8. What is the Elbow Method?
+
+It is a technique used to find the optimal number of clusters by plotting inertia against the number of clusters.
+
+Q9. What is inertia?
+
+Inertia is the sum of squared distances between data points and their nearest cluster centroid.
+
+Q10. What is `random_state=42`?
+
+It ensures reproducible results by controlling random initialization.
+
+Q11. What is `fit()`?
+
+It trains the K-Means model on the given dataset.
+
+Q12. What is `fit_predict()`?
+
+It trains the model and returns the cluster labels for each data point.
+
+Q13. What is `k-means++`?
+
+It is an initialization technique that selects better initial centroids to improve clustering.
+
+Q14. What is `df.shape`?
+
+It returns the number of rows and columns. Here, the output is `(2823, 2)`.
+
+Q15. What is the difference between classification and clustering?
+
+- Classification: Supervised learning.
+- Clustering: Unsupervised learning.
+
+## 5. Important code questions
+
+| Code               | Meaning                      |
+| ------------------ | ---------------------------- |
+| `pd.read_csv()`    | Reads CSV file               |
+| `df.head()`        | Displays first 5 rows        |
+| `df.info()`        | Dataset information          |
+| `df.describe()`    | Statistical summary          |
+| `df.corr()`        | Calculates correlation       |
+| `df.isna()`        | Checks missing values        |
+| `df.shape`         | Rows and columns             |
+| `KMeans()`         | Creates clustering model     |
+| `fit()`            | Trains model                 |
+| `fit_predict()`    | Trains and predicts clusters |
+| `cluster_centers_` | Returns centroid positions   |
+| `inertia_`         | Returns model inertia        |
+
+## 6. Advantages and disadvantages
+
+Advantages
+
+1. Simple and easy to implement.
+2. Fast for large datasets.
+3. Easy to understand.
+4. Useful for grouping similar data.
+
+Disadvantages
+
+1. K must be selected beforehand.
+2. Sensitive to outliers.
+3. Results depend on initial centroids.
+4. Not suitable for every type of cluster shape.
+
+## 7. Test yourself – Viva practice
+
+Let's check your preparation. I'll ask one question at a time, just like your external examiner.
+
+Viva MCQ Test
+
+1 / 5
+
+Q1. What type of machine learning algorithm is K-Means?
+
+Supervised
+
+Unsupervised
+
+Reinforcement
+
+Semi-supervised
+
+Next
+
+My advice: Focus especially on K-Means, centroid, inertia, Elbow Method, `fit_predict()`, and the two graphs. These are the most important concepts in this practical.

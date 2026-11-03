@@ -1,0 +1,284 @@
+# B2.pdf – Machine Learning Viva Preparation
+
+Your new PDF contains a practical on Email Spam Classification using Machine Learning.
+
+I'll explain the practical in simple English, with important viva questions and answers that you can speak directly in your college viva.
+
+Practical overview
+
+- Topic: Email Spam Classification
+- Dataset: `emails.csv`
+- Total records: 5,172 emails
+- Total columns: 3,002
+- Features: 3,000
+- Target: Prediction
+- Training/testing: 85% / 15%
+- Algorithms: KNN and four SVM models
+
+## 1. Project introduction
+
+Q1. What is the aim of this practical?
+
+The aim is to classify emails as spam or non-spam using Machine Learning algorithms.
+
+Q2. What is spam email?
+
+Spam is an unwanted or unsolicited email, usually sent for advertising, fraud or promotional purposes.
+
+Q3. What is email classification?
+
+Email classification is the process of categorizing emails into different classes, such as spam and non-spam.
+
+Q4. Which dataset did you use?
+
+We used the `emails.csv` dataset containing 5,172 email records.
+
+## 2. Python libraries
+
+| Library      | Purpose                       |
+| ------------ | ----------------------------- |
+| Pandas       | Data handling                 |
+| NumPy        | Numerical calculations        |
+| Seaborn      | Data visualization            |
+| Matplotlib   | Graph plotting                |
+| Scikit-learn | ML algorithms                 |
+| SVC          | Support Vector Classification |
+
+Q5. What is Pandas?
+
+Pandas is a Python library used for data manipulation and analysis.
+
+Q6. What is Scikit-learn?
+
+It is a Python library used to implement machine learning algorithms.
+
+## 3. Data preprocessing
+
+Q7. What is data preprocessing?
+
+It is the process of cleaning and preparing data before applying machine learning algorithms.
+
+Q8. What does `df.head()` do?
+
+It displays the first five rows of the dataset.
+
+Q9. What does `df.info()` do?
+
+It displays information about columns, data types and non-null values.
+
+Q10. Why did you remove Email No.?
+
+Because it is only an identification column and is not useful for classification.
+
+Code:
+
+```
+df.drop(columns=['Email No.'], inplace=True)
+```
+
+Q11. What is `df.isna().sum()`?
+
+It checks and counts missing values in each column.
+
+Q12. What is `df.describe()`?
+
+It provides statistical information such as mean, standard deviation, minimum and maximum.
+
+## 4. Features and labels
+
+Q13. What are features?
+
+Features are the input variables used by a machine learning model to make predictions.
+
+Q14. What is a label?
+
+A label is the output or target that the model tries to predict.
+
+In your practical:
+
+- X = 3,000 independent features.
+- Y = Prediction (dependent variable).
+
+Code:
+
+```
+X = df.iloc[:, :df.shape[1]-1]y = df.iloc[:, -1]
+```
+
+Q15. What is supervised learning?
+
+Supervised learning is a machine learning technique in which a model learns from labelled data.
+
+## 5. Train-test splitting
+
+Q16. What is train-test splitting?
+
+It divides the dataset into training and testing sets.
+
+Q17. What is the ratio used in your practical?
+
+- Training data: 85%
+- Testing data: 15%
+
+Q18. Why do we split the dataset?
+
+To train the model and evaluate its performance on unseen data.
+
+## 6. Machine Learning algorithms
+
+Your practical uses five classification models.
+
+### A. K-Nearest Neighbors (KNN)
+
+[K-Nearest Neighbors (KNN): A Simple Yet Powerful Machine Learning Algorithm | by Balu Anil Kumar | Feb, 2026 | Medium](https://images.openai.com/static-rsc-4/WBq3W4JX7X-wizdNs6PyfAsmJXhNZWKUZOxGhIQ5khuD7mUVmb8aAYpnhSmQYlkggk5Xt4gfUCPnmEXVbZ-d9DY0ZFg3K8Tb-MoET04AHYpP3F1-3wcENMEiOzu9uBmKWFFw9TdIJin0pGMOFXJ5D-XXboPiyeWIG0rZ2mAoMlw?purpose=inline)
+
+[medium.com](https://medium.com/%40baluanilkumar777/k-nearest-neighbors-knn-a-simple-yet-powerful-machine-learning-algorithm-d5043ca512b6?utm_source=chatgpt.com)
+
+Q19. What is KNN?
+
+KNN is a supervised learning algorithm that classifies data based on its nearest neighbouring data points.
+
+Q20. What is K in KNN?
+
+K represents the number of nearest neighbours considered for classification.
+
+In your practical:
+
+```
+KNeighborsClassifier(n_neighbors=2)
+```
+
+K = 2.
+
+### B. Support Vector Machine (SVM)
+
+[Supervised Learning: Classification Using Support Vector Machines (SVM) | by Ashkan Beheshti | Medium](https://images.openai.com/static-rsc-4/xksd4r-OdLuKm05JmUHsOziQDuUZ9LbFqPPh0NU_riavONg7ItZPKj9KqsnXCKgJfpQtTeXI_rQ4Oejc3tE_5_OMAoiozQuWGYyKpZc80LUjqZM_qL9gUHunbNTQZ8GUtVx3yJhdgHKyh6YcEWhfjFQv8sSzNMoN2u-9PbRM7wE?purpose=inline)
+
+[behesht.medium.com](https://behesht.medium.com/support-vector-machies-part1-classification-fc1cc382b8a4?utm_source=chatgpt.com)
+
+Q21. What is SVM?
+
+SVM is a supervised machine learning algorithm used for classification and regression.
+
+Q22. What is a hyperplane?
+
+A hyperplane is a decision boundary that separates different classes of data.
+
+Q23. What are support vectors?
+
+Support vectors are the data points closest to the decision boundary.
+
+### C. Types of SVM used in your practical
+
+| Model          | Meaning                                   |
+| -------------- | ----------------------------------------- |
+| Linear SVM     | Uses a straight decision boundary         |
+| Polynomial SVM | Uses polynomial-based decision boundaries |
+| RBF SVM        | Uses Radial Basis Function kernel         |
+| Sigmoid SVM    | Uses sigmoid kernel                       |
+
+Q24. What is a kernel in SVM?
+
+A kernel helps SVM handle data that cannot be separated easily using a straight line.
+
+Q25. What is RBF?
+
+RBF stands for Radial Basis Function. It is used to classify nonlinear data.
+
+## 7. Accuracy and results
+
+Very important
+
+Your PDF shows the following results on page 3.
+
+| Algorithm      | Accuracy |
+| -------------- | -------- |
+| KNN            | 88.79%   |
+| Linear SVM     | 97.55%   |
+| Polynomial SVM | 76.16%   |
+| RBF SVM        | 81.83%   |
+| Sigmoid SVM    | 62.37%   |
+
+Best performing model
+
+# 97.55%
+
+Linear SVM
+
+Highest accuracy in your practical.
+
+Q26. Which algorithm performed best?
+
+Linear SVM performed best with an accuracy of approximately 97.55%.
+
+Q27. What is accuracy?
+
+Accuracy is the percentage of correctly predicted results out of total predictions.
+
+Formula:
+
+\\[ Accuracy=\frac{Correct\ Predictions}{Total\ Predictions}\times100 \\]
+
+Q28. What is classification?
+
+Classification is a supervised learning technique used to predict categories or classes.
+
+Q29. What is the conclusion of your practical?
+
+We successfully classified emails using five machine learning models. Linear SVM achieved the highest accuracy of approximately 97.55%.
+
+## 8. Important code explanation
+
+| Code                 | Explanation                  |
+| -------------------- | ---------------------------- |
+| `pd.read_csv()`      | Loads CSV dataset            |
+| `df.info()`          | Displays dataset information |
+| `df.head()`          | Displays first five rows     |
+| `df.drop()`          | Removes a column             |
+| `df.isna().sum()`    | Checks missing values        |
+| `df.describe()`      | Displays statistics          |
+| `df.iloc[]`          | Selects rows and columns     |
+| `train_test_split()` | Splits dataset               |
+| `model.fit()`        | Trains model                 |
+| `model.predict()`    | Predicts output              |
+| `accuracy_score()`   | Calculates accuracy          |
+
+## 9. Most important viva questions
+
+1. What is Artificial Intelligence?
+2. What is Machine Learning?
+3. What is supervised learning?
+4. What is classification?
+5. What is spam email?
+6. What is KNN?
+7. What is SVM?
+8. What is a hyperplane?
+9. What is a kernel?
+10. What is RBF?
+11. What is accuracy?
+12. Which algorithm gives the highest accuracy?
+13. What is the difference between classification and regression?
+14. What are independent and dependent variables?
+15. Why do we divide data into training and testing sets?
+
+## 10. Test your preparation – Mock viva
+
+Let's check how well you understand this practical.
+
+B2 Viva Test
+
+1/5
+
+Q1. What is the main aim of this practical?
+
+Predict Uber fare
+
+Classify spam emails
+
+Detect objects
+
+Predict weather
+
+PreviousCheck answer
+
+Study tip: Give special attention to KNN, SVM, the four SVM kernels, and the accuracy table. These are the most important concepts in this practical.

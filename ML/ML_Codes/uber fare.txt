@@ -1,0 +1,501 @@
+# ML Viva Preparation – Uber Fare Prediction
+
+I have studied your uploaded B1.pdf (8 pages). It contains an ML practical on predicting Uber taxi fares using Linear Regression and Random Forest Regression.
+
+I'll prepare you with simple English answers that you can speak directly in your viva.
+
+## 1. Project introduction (Most important)
+
+Q1. What is the aim of this practical?
+
+The aim is to predict Uber taxi fares based on the distance between pickup and drop locations using Machine Learning algorithms.
+
+Q2. Which dataset did you use?
+
+We used the Uber fare dataset (`uber.csv`), which contains 2 lakh records.
+
+Q3. Which algorithms did you use?
+
+1. Simple Linear Regression.
+2. Random Forest Regression.
+
+Q4. What is Machine Learning?
+
+Machine Learning is a branch of Artificial Intelligence that allows computers to learn from data and make predictions without being explicitly programmed.
+
+Q5. What is regression?
+
+Regression is a supervised machine learning technique used to predict continuous numerical values, such as price, salary or fare.
+
+## 2. Python libraries
+
+| Library      | Use                       |
+| ------------ | ------------------------- |
+| Pandas       | Data handling             |
+| NumPy        | Mathematical calculations |
+| Matplotlib   | Data visualization        |
+| Seaborn      | Statistical graphs        |
+| Scikit-learn | Machine Learning          |
+| PyLab        | Plotting support          |
+
+Q6. What is Pandas?
+
+Pandas is a Python library used for data manipulation and analysis.
+
+Q7. What is NumPy?
+
+NumPy is used for numerical calculations and working with arrays.
+
+Q8. What is Matplotlib?
+
+It is used to create graphs and charts.
+
+Q9. What is Scikit-learn?
+
+It is a Python library used to implement machine learning algorithms.
+
+## 3. Data preprocessing
+
+Q10. What is data preprocessing?
+
+Data preprocessing is the process of cleaning and preparing raw data before applying machine learning algorithms.
+
+Q11. What is a DataFrame?
+
+A DataFrame is a two-dimensional tabular data structure provided by Pandas.
+
+Q12. What is `df.head()`?
+
+It displays the first five rows of the dataset by default.
+
+Q13. What is `df.info()`?
+
+It displays information about columns, data types and non-null values.
+
+Q14. What is `df.describe()`?
+
+It displays statistical information such as mean, standard deviation, minimum and maximum.
+
+Q15. What are NULL values?
+
+NULL values are missing values in a dataset.
+
+Q16. How did you remove NULL values?
+
+Using:
+
+```
+df.dropna(axis=0, inplace=True)
+```
+
+Q17. Why did you remove unnecessary columns?
+
+We removed `Unnamed: 0` and `key` because they were not required for fare prediction.
+
+## 4. Haversine formula
+
+[Haversine Distance Calculator | Haversine Formula & Example](https://images.openai.com/static-rsc-4/JARFjfqCGjMaRVnByquuoo0PxmNEroT0jPQPTWStKVYhhMAiUIQrlsfzRA5Do55Kuakc8LB_2E99o12EK1saNloMU_kKjLwQ6WWntA7nHUbvSE_Bt6g3x-xDKyiBykjl2JiOetUqfACnbFrLdUp9-NFk4qO7qWQ50y1lHlnNKl0?purpose=inline)
+
+[easycalculator.org](https://easycalculator.org/haversine-distance?utm_source=chatgpt.com)
+
+Q18. What is the Haversine formula?
+
+It calculates the geographical distance between two points on Earth using latitude and longitude.
+
+Q19. Why did you use the Haversine formula?
+
+To calculate the accurate distance between the pickup and drop locations.
+
+Q20. What is latitude?
+
+Latitude is the geographical position measured north or south of the equator.
+
+Q21. What is longitude?
+
+Longitude is the geographical position measured east or west of the Prime Meridian.
+
+Q22. What is the value 6371 in your code?
+
+It represents the approximate radius of Earth in kilometres.
+
+## 5. Outliers and correlation
+
+Q23. What are outliers?
+
+Outliers are data values that are significantly different from other observations.
+
+Q24. Why did you remove outliers?
+
+To remove incorrect or extreme values that can negatively affect model performance.
+
+Q25. What is a scatter plot?
+
+A scatter plot shows the relationship between two numerical variables.
+
+Q26. What is a correlation matrix?
+
+It shows the relationship between numerical variables in a dataset.
+
+Q27. What is the range of correlation?
+
+From -1 to +1.
+
+- +1: Perfect positive correlation.
+- -1: Perfect negative correlation.
+- 0: No linear correlation.
+
+Important: In your practical, Distance and fare_amount have a correlation of approximately 0.8577.
+
+## 6. Standardization and model training
+
+Q28. What is standardization?
+
+Standardization converts data into a common scale, generally with mean 0 and standard deviation 1.
+
+Q29. Which function is used for standardization?
+
+```
+StandardScaler()
+```
+
+Q30. What are independent and dependent variables?
+
+- Independent variable (X): Distance.
+- Dependent variable (Y): Fare amount.
+
+Q31. What is train-test splitting?
+
+It divides the dataset into training and testing parts.
+
+Q32. What is the test size in your practical?
+
+20% testing data and 80% training data.
+
+Q33. What is `random_state=0`?
+
+It ensures reproducible splitting of the dataset.
+
+## 7. Algorithms
+
+Q34. What is Linear Regression?
+
+Linear Regression is a supervised learning algorithm that predicts continuous values using a linear relationship between variables.
+
+Formula:
+
+\\[ Y=mX+c \\]
+
+Where:
+
+- Y = Predicted fare
+- X = Distance
+- m = Slope
+- c = Intercept
+
+Q35. What is Random Forest Regression?
+
+It is an ensemble learning algorithm that combines multiple decision trees to predict continuous values.
+
+Q36. What is `n_estimators=100`?
+
+It means the Random Forest model uses 100 decision trees.
+
+Q37. What is the difference between Linear Regression and Random Forest?
+
+| Linear Regression              | Random Forest                |
+| ------------------------------ | ---------------------------- |
+| Uses a linear relationship     | Uses multiple decision trees |
+| Simple model                   | Ensemble model               |
+| Easy to interpret              | More complex                 |
+| Works well for linear patterns | Can learn complex patterns   |
+
+## 8. Model evaluation
+
+Q38. What is MAE?
+
+Mean Absolute Error measures the average absolute difference between actual and predicted values.
+
+Q39. What is MSE?
+
+Mean Squared Error calculates the average of squared prediction errors.
+
+Q40. What is RMSE?
+
+Root Mean Squared Error is the square root of MSE. Lower RMSE generally indicates better predictions.
+
+Q41. What is R-squared?
+
+R-squared measures how well the model explains the variation in the target variable.
+
+A value closer to 1 generally indicates a better fit.
+
+Q42. What is MAPE?
+
+Mean Absolute Percentage Error measures prediction error as a percentage.
+
+## 9. Results from your practical
+
+Important for viva
+
+According to your PDF, page 6 and page 8:
+
+| Evaluation           | Linear Regression | Random Forest |
+| -------------------- | ----------------- | ------------- |
+| RMSE                 | 0.52012           | 0.57704       |
+| R-squared (reported) | 0.856765          | 0.820152      |
+
+Q43. Which algorithm performed better in your practical?
+
+Linear Regression performed better because it has lower RMSE and higher reported R-squared than Random Forest Regression.
+
+Q44. What is the conclusion of your practical?
+
+We successfully predicted Uber fares using Machine Learning. We compared Linear Regression and Random Forest Regression, and Linear Regression performed better on the reported evaluation metrics.
+
+## 10. Important code questions
+
+| Code                           | Meaning                     |
+| ------------------------------ | --------------------------- |
+| `pd.read_csv()`                | Reads CSV file              |
+| `df.drop()`                    | Removes columns or rows     |
+| `df.isna().sum()`              | Counts missing values       |
+| `pd.to_datetime()`             | Converts data into datetime |
+| `plt.scatter()`                | Creates scatter plot        |
+| `df.corr()`                    | Calculates correlation      |
+| `model.fit()`                  | Trains model                |
+| `model.predict()`              | Makes predictions           |
+| `train_test_split()`           | Splits dataset              |
+| `metrics.mean_squared_error()` | Calculates MSE              |
+
+## 11. Test yourself – Viva practice
+
+Let's practise like an actual college viva. I'll ask one question at a time, check your answer and explain corrections.
+
+Viva mock test
+
+1 of 5
+
+Q1. What is the main aim of your Uber fare prediction practical?
+
+To predict taxi fare using distance
+
+To classify passengers
+
+To detect fake accounts
+
+To predict weather
+
+PreviousCheck answer
+
+My suggestion: First learn the project introduction, Haversine formula, Linear Regression, Random Forest, RMSE and R-squared. These are especially important for your practical viva.
+
+These are the actual graphs from your Uber Fare Prediction practical. I'll explain each graph separately, including what it shows, why we use it, and what to say in your viva.
+
+# 1. Scatter Plot – Before Data Cleaning
+
+First screenshot – Top graph
+
+[Lecture 7 (guest) - Introduction to Data Visualization in Python — UCSD CSS 2](https://images.openai.com/static-rsc-4/uZS6kj1oJaUJyyCDmMwiz54yEEgANr7LpyXG0XKt42PN0papEaoTw-mwSAErevtxokVeaapKNQg1lQ2q9lwVAjcRGTsIFK20uFSdJry09lwadxeU6ama4MDTn8y-FL42hkdgA7FyLTZrruz0X8yPirMDD_nOg1butyvywVmaL-I?purpose=inline)
+
+[ucsd-css-002.github.io](https://ucsd-css-002.github.io/lectures/sp22/Lecture_7-pre.html?utm_source=chatgpt.com)
+
+What is shown?
+
+- X-axis: Distance
+- Y-axis: Fare Amount
+- Blue dots: Individual Uber trips.
+
+Explanation:
+
+You can see some dots very far away from the main group. These are possible outliers.
+
+For example:
+
+- Some trips have extremely large distances.
+- Some trips have unusually high or negative fares.
+- These values may affect model accuracy.
+
+Viva answer:
+
+"This scatter plot shows the relationship between distance and fare amount before removing outliers. We can identify unusual values that need data cleaning."
+
+# 2. Box Plot – Outlier Detection
+
+First screenshot – Middle graph
+
+[Outliers Identification: 2 Techniques you must know! | by Parth Vichare | Medium](https://images.openai.com/static-rsc-4/chyszB4f0ctuWBHA-SCFkSQIZNpeKz46sLgbfEnYlBEjRoICBmO0C7ghxsNACu1pTNiGUnnXzFWXUMYkUdDNZqWiGq6zuxU6kAm8vaL2Uh5lUXHgcRST-AnrMx_aaxt9BdAOQDzMwwagH0wns3cfdO6mCg1O6eO6D3s0Xpt1on4?purpose=inline)
+
+[medium.com](https://medium.com/%40parthvichare/outliers-identification-2-techniques-you-must-know-ae8c680b7504?utm_source=chatgpt.com)
+
+What is shown?
+
+The box plot displays the distribution of different columns in the dataset.
+
+- Middle line: Median.
+- Box: Middle 50% of values.
+- Whiskers: Data spread.
+- Dots outside whiskers: Potential outliers.
+
+In your graph, Distance and some geographical coordinates have extreme values.
+
+Viva answer:
+
+"We use a box plot to detect outliers. It helps us identify unusual values in the dataset before training the model."
+
+Important code from your practical:
+
+```
+df.drop(df[df['Distance'] > 60].index, inplace=True)df.drop(df[df['fare_amount'] <= 0].index, inplace=True)
+```
+
+This removes trips with distances above 60 km and non-positive fares.
+
+# 3. Scatter Plot – After Data Cleaning
+
+Second screenshot – Top graph
+
+[Taxi Fares in New York City: A Prediction | by Maitha Alqahtani | Medium](https://images.openai.com/static-rsc-4/Cdz0UVQnPpvFO9BlqrG2g1Fv8S9pQB4ERfiLImpsVh-RdXnhadlBVbhMtgo3TQUThD3ivSiXeebsWy3DOAnr8i-8BZ8y82S4GEm7rcQ6P7aNPF-XpFae2YeoG1CmSjXHj0gaMbtHh1nMUjsyNExSUjMXqBkAyLmtECY9OMBjWHM?purpose=inline)
+
+[medium.com](https://medium.com/%40maithaq/taxi-fares-in-new-york-city-a-prediction-blog-5ecfb70521ec?utm_source=chatgpt.com)
+
+What is shown?
+
+- X-axis: Distance.
+- Y-axis: Fare Amount.
+- Blue dots: Uber trips.
+
+Observation:
+
+You can see that most data points are now concentrated between 0 and 30 km.
+
+As distance increases, fare amount generally increases.
+
+Viva answer:
+
+"After removing outliers, we plotted the scatter graph again. It shows a positive relationship between distance and fare amount."
+
+# 4. Correlation Matrix (Heatmap)
+
+Second screenshot – Middle graph
+
+[Using Random Forest and XGBoost To Predict Income | by Donovan Choy | Medium](https://images.openai.com/static-rsc-4/Rr7EqmgyxHIogX0R-PJqpa-U4dC-JR_Ys5ZwHirkoNhpASrXSnOUekcw9BuYfi8D9d5uZYkYTExz-UbSlpGvl9OBq-MkBxTJr1TTpEc9BvQqC2t2fP9BwYa12syTClSMet812tC1K4GZA9F9nsX8c4MmVGB-HJCKQR5ckPThqJI?purpose=inline)
+
+[donovanchoy.medium.com](https://donovanchoy.medium.com/using-random-forest-models-to-predict-income-04c8c8754a3c?utm_source=chatgpt.com)
+
+What is shown?
+
+This graph shows how strongly different variables are related to each other.
+
+In your practical, the most important value is:
+
+Distance and Fare Amount correlation
+
+# 0.857729
+
+Strong positive correlation
+
+How to understand the colours?
+
+- Dark green: Strong positive correlation.
+- Light green: Weak correlation.
+- Negative values: Negative correlation.
+
+Viva questions:
+
+Q. What is correlation?
+
+Ans. Correlation measures the relationship between two variables.
+
+Q. What does 0.857729 mean?
+
+Ans. It indicates a strong positive relationship between distance and fare amount.
+
+Q. Why do we use a correlation matrix?
+
+Ans. To identify relationships between variables.
+
+# 5. Linear Regression – Training Set and Test Set
+
+Third screenshot
+
+[Ordinary Least Squares and Ridge Regression — scikit-learn 1.9.0 documentation - sklearn](https://images.openai.com/static-rsc-4/XaADTvTVPhD2wvy12viKxQEZSAaJBSIip7ycboF98PYRsD2iQxSxKs8aAETsgvh5bI8ZreLC9NaGkg6TaFeWackdRMJUMl3ZTbuAmgx7vpNJ12dtyRJLP1W3Wd5dk9T8gUHHNSraKcQBLdCscPkBEFhj4eetxjmCH7RQcZFHLqo?purpose=inline)
+
+[sklearn.org](https://sklearn.org/stable/auto_examples/linear_model/plot_ols_ridge.html?utm_source=chatgpt.com)
+
+Your practical contains two graphs.
+
+A. Training Set (Left graph)
+
+- Red dots: Actual training data.
+- Blue line: Regression line.
+- X-axis: Distance.
+- Y-axis: Fare amount.
+
+Explanation: The model learns the relationship between distance and fare using training data.
+
+B. Test Set (Right graph)
+
+- Red dots: Actual testing data.
+- Blue line: Predicted regression line.
+- It checks how well the model predicts unseen data.
+
+Viva answer:
+
+"The left graph represents training data, which is used to train the model. The right graph represents testing data, which is used to evaluate the model's prediction performance."
+
+Important observation:
+
+The blue line shows an upward trend, meaning fare generally increases with distance.
+
+# 6. Random Forest – Actual vs Predicted Graph
+
+Fourth screenshot
+
+[Optimizing Taxi Demand Forecasting in NYC: A Data-Driven Approach for Resource Allocation | by Sarah Yan | Medium](https://images.openai.com/static-rsc-4/3u7jSmxaevahdokmc_PTkeyqoFSwTwG4L1dejSTpCcbHGxOZUsS2nI6Vkg1G4oC26LsbFmwlaFBoGEVDNidvc0QxGFSiSRt44gsbk0oYqPtmiiES1G-7tZzfDMLAfk8FwOEAnGLFVqQihuz2UilW2_n6tBuuFyvVtDSzyDKrm2w?purpose=inline)
+
+[medium.com](https://medium.com/%40sarahxyan/optimizing-taxi-demand-forecasting-in-nyc-a-data-driven-approach-for-resource-allocation-25bd711e1032?utm_source=chatgpt.com)
+
+What is shown?
+
+This graph compares actual values with predicted values from Random Forest Regression.
+
+- Blue dots: Real (actual) values.
+- Red dots: Predicted values.
+- X-axis: Input values.
+- Y-axis: Target values.
+
+In your Uber practical, these represent standardized distance and fare values.
+
+How to understand the graph?
+
+- If red and blue dots are close together, predictions are more accurate.
+- If they are far apart, prediction error is higher.
+
+Viva answer:
+
+"This graph compares actual and predicted fare values using Random Forest Regression. We use it to understand how accurately our model predicts Uber fares."
+
+Note: The labels `Carat` and `Price` in your graph are leftover labels from another example. Your actual project is Uber Fare Prediction, so explain them as Distance and Fare Amount.
+
+# Final revision – Remember these six diagrams
+
+| Diagram                        | Main purpose                        |
+| ------------------------------ | ----------------------------------- |
+| Scatter Plot (before cleaning) | Identify unusual data points        |
+| Box Plot                       | Detect outliers                     |
+| Scatter Plot (after cleaning)  | Show distance-fare relationship     |
+| Correlation Matrix             | Measure relationships               |
+| Linear Regression Graph        | Show training and testing           |
+| Random Forest Graph            | Compare actual and predicted values |
+
+## 7 important viva questions
+
+1. Why do we use scatter plots? – To show relationships between two numerical variables.
+2. Why do we use box plots? – To identify outliers.
+3. What is a heatmap? – A graphical representation of correlation values.
+4. What does 0.857729 mean? – Strong positive correlation.
+5. What is a regression line? – A line representing the predicted relationship between variables.
+6. What do red and blue dots represent in the Random Forest graph? – Predicted and actual values, respectively.
+7. Why do we visualize data? – To understand patterns, relationships and errors.
+
+My advice: In your viva, focus especially on explaining the Box Plot, Correlation Matrix and Linear Regression graphs. These are common places where teachers ask follow-up questions.

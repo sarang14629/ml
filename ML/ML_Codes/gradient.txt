@@ -1,0 +1,281 @@
+# Viva Preparation – Gradient Descent Algorithm (B4.pdf)
+
+
+
+Practical Viva Notes
+
+Easy English
+
+
+
+Your practical is based on Gradient Descent, an optimization algorithm used in Machine Learning to find the minimum value of a function.
+
+## 1. Aim of the practical
+
+To implement the Gradient Descent algorithm in Python and find the local minimum of a given mathematical function using its derivative.
+
+## 2. What is Gradient Descent?
+
+Gradient Descent is an optimization algorithm used to minimize a function by repeatedly updating its input value in the direction opposite to the gradient.
+
+Simple explanation: It finds the lowest point of a curve step by step.
+
+## 3. Important concepts
+
+| Term          | Meaning                              |
+| ------------- | ------------------------------------ |
+| Gradient      | Derivative of a function             |
+| Learning rate | Controls the size of each step       |
+| Iteration     | One repetition of the algorithm      |
+| Local minimum | Lowest point in a nearby region      |
+| Tolerance     | Minimum acceptable change            |
+| Optimization  | Finding the minimum or maximum value |
+
+## 4. Explain the code
+
+Step 1: Import libraries
+
+```
+from sympy import Symbol, lambdifyimport matplotlib.pyplot as pltimport numpy as np
+```
+
+- `SymPy`: Performs symbolic mathematical operations.
+- `Matplotlib`: Creates graphs.
+- `NumPy`: Performs numerical operations.
+
+Step 2: Define variable
+
+```
+x = Symbol('x')
+```
+
+Creates a symbolic variable x.
+
+Step 3: Define Gradient Descent function
+
+```
+def gradient_descent(    function, start, learn_rate,    n_iter=10000, tolerance=1e-06, step_size=1):
+```
+
+- `function`: Mathematical function.
+- `start`: Initial value.
+- `learn_rate`: Learning rate.
+- `n_iter`: Maximum number of iterations.
+- `tolerance`: Stopping condition.
+- `step_size`: Change in x.
+
+Step 4: Calculate derivative
+
+```
+gradient = lambdify(x, function.diff(x))
+```
+
+Calculates the derivative of the function and converts it into a numerical function.
+
+Step 5: Update the value
+
+```
+start = start - learn_rate * gradient(prev_x)
+```
+
+This is the main Gradient Descent formula:
+
+\\[ x\_{new}=x\_{old}-\alpha f'(x) \\]
+
+Where:
+
+- \\(x\\) = Current value
+- \\(\alpha\\) = Learning rate
+- \\(f'(x)\\) = Derivative
+
+Step 6: Stopping condition
+
+```
+while step_size > tolerance and iters < n_iter:
+```
+
+The loop stops when the change becomes smaller than tolerance or maximum iterations are reached.
+
+Step 7: Plot graph
+
+```
+plt.plot(x_, y, 'r')plt.plot(points, function(np.array(points)), '-o')plt.show()
+```
+
+- Red line: Original mathematical function.
+- Blue line with points: Gradient Descent steps towards the minimum.
+
+## 5. Explain the output (Page 2)
+
+[Understanding the Core Concepts of Deep Learning with MIT 6.S191 | Breye Foka Blog](https://images.openai.com/static-rsc-4/o5l6Z50bAIJNrIxkeOJLWz7JoilSWdaZab-uXdtH_PNU-_YVfQeHXA5JIjzF5vKqNJwYEPwHhV4DzKkWjD88BTPwdyp3WLMSvp4LSQh3o8AbTzkY8AZTK6yM9nhumUgGUT0em_gIm9JUj6OA_9dhM9aiCjNQ1x9KblVhj2PD5iM?purpose=inline)
+
+[breyefoka.dev](https://www.breyefoka.dev/posts/deeplearning?utm_source=chatgpt.com)
+
+Given function:
+
+\\[ f(x)=(x+5)^2 \\]
+
+Initial value = 3
+
+Learning rate = 0.2
+
+Iterations = 50
+
+Derivative:
+
+\\[ f'(x)=2(x+5) \\]
+
+Actual minimum:
+
+\\[ x=-5 \\]
+
+Output:
+
+```
+The local minimum occurs at
+-4.999998938845185
+```
+
+Conclusion: The algorithm successfully finds the minimum value, approximately -5.
+
+## 6. Important viva questions and answers
+
+Q1. What is Gradient Descent?
+
+It is an optimization algorithm used to minimize a function.
+
+Q2. Why do we use Gradient Descent?
+
+To find the minimum error or loss in Machine Learning models.
+
+Q3. What is a learning rate?
+
+It controls how big a step the algorithm takes during each update.
+
+Q4. What happens if the learning rate is too high?
+
+The algorithm may overshoot the minimum and fail to converge.
+
+Q5. What happens if the learning rate is too small?
+
+The algorithm takes more time to reach the minimum.
+
+Q6. What is a derivative?
+
+A derivative measures the rate of change of a function.
+
+Q7. What is a local minimum?
+
+A point where the function has a lower value than nearby points.
+
+Q8. What is the role of NumPy?
+
+It performs numerical calculations and creates arrays.
+
+Q9. What is the role of Matplotlib?
+
+It is used to visualize the function and its optimization steps.
+
+Q10. What is SymPy?
+
+It is a Python library used for symbolic mathematics.
+
+Q11. What is lambdify?
+
+It converts a symbolic mathematical expression into a numerical Python function.
+
+Q12. What is tolerance?
+
+It is the acceptable minimum change used to stop iterations.
+
+Q13. What is an iteration?
+
+One complete execution of the update process.
+
+Q14. What is the formula for Gradient Descent?
+
+\\[ x\_{new}=x\_{old}-\alpha f'(x) \\]
+
+Q15. Where is Gradient Descent used?
+
+- Linear Regression
+- Logistic Regression
+- Neural Networks
+- Deep Learning
+
+## 7. Additional important questions
+
+| Question                                        | Answer                                                    |
+| ----------------------------------------------- | --------------------------------------------------------- |
+| Is Gradient Descent supervised or unsupervised? | It is an optimization algorithm, not a learning category. |
+| Can Gradient Descent find a global minimum?     | Yes, for suitable convex functions.                       |
+| What is convergence?                            | Reaching a stable minimum value.                          |
+| What is divergence?                             | Moving away from the minimum.                             |
+| What is the initial point?                      | Starting value of x.                                      |
+| What is the minimum of the given function?      | -5 for x.                                                 |
+
+## 8. Test your viva preparation
+
+Try answering these questions without looking at the notes.
+
+Gradient Descent MCQ Test
+
+0/5 answered
+
+Q1. What is the main purpose of Gradient Descent?
+
+To sort data
+
+To minimize a function
+
+To create a database
+
+
+
+Q2. What is the derivative of (x+5)²?
+
+x+5
+
+2(x+5)
+
+2x+5
+
+
+
+Q3. Which parameter controls the step size?
+
+Learning rate
+
+Iteration
+
+Tolerance
+
+
+
+Q4. What is the minimum x value in this practical?
+
+3
+
+0
+
+-5
+
+
+
+Q5. Which library is used to plot the graph?
+
+NumPy
+
+Matplotlib
+
+SymPy
+
+
+
+Submit answers
+
+Last-minute viva tip: Remember these three things:
+
+1. Gradient Descent minimizes a function.
+2. Learning rate controls the step size.
+3. For this practical, the minimum is x = -5.

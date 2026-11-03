@@ -1,0 +1,467 @@
+# Viva Preparation – Diabetes Prediction using KNN
+
+I have examined your uploaded `dibaties.ipynb` notebook. Let's prepare for your practical viva using your actual code, step by step, in simple English.
+
+
+
+Practical Viva Notes
+
+Machine Learning
+
+
+
+## 1. Aim of the practical
+
+Aim: To predict whether a person has diabetes or not using the K-Nearest Neighbors (KNN) machine learning algorithm.
+
+Simple explanation:
+
+This project uses patient health information such as glucose level, insulin, BMI, age, and pregnancies to predict diabetes.
+
+The output is:
+
+- `0` – Person does not have diabetes.
+- `1` – Person has diabetes.
+
+## 2. Important libraries used
+
+| Library        | Purpose               |
+| -------------- | --------------------- |
+| Pandas         | Data handling         |
+| NumPy          | Numerical operations  |
+| Seaborn        | Data visualization    |
+| Matplotlib     | Graph plotting        |
+| Scikit-learn   | Machine learning      |
+| StandardScaler | Feature scaling       |
+| GridSearchCV   | Hyperparameter tuning |
+
+Viva question: What is Pandas?
+
+Answer: Pandas is a Python library used for data manipulation and analysis.
+
+What is NumPy?
+
+Answer: NumPy is used for numerical calculations and working with arrays.
+
+What is Scikit-learn?
+
+Answer: It is a Python library used to implement machine learning algorithms.
+
+## 3. Understanding your dataset
+
+Your notebook loads the dataset using:
+
+```
+df = pd.read_csv('diabetes.csv')
+```
+
+Your dataset contains:
+
+# 768
+
+Total records
+
+# 9
+
+Original columns
+
+# 6
+
+Final input features
+
+# 1
+
+Output column
+
+Important dataset columns:
+
+| Column        | Meaning                    |
+| ------------- | -------------------------- |
+| Pregnancies   | Number of pregnancies      |
+| Glucose       | Glucose level              |
+| BloodPressure | Blood pressure             |
+| SkinThickness | Skin thickness             |
+| Insulin       | Insulin level              |
+| BMI           | Body Mass Index            |
+| Pedigree      | Diabetes pedigree function |
+| Age           | Patient's age              |
+| Outcome       | Diabetes result            |
+
+Viva questions
+
+Q1. What is a dataset?
+
+A: A dataset is a collection of related data arranged in rows and columns.
+
+Q2. What is a DataFrame?
+
+A: A DataFrame is a two-dimensional data structure provided by Pandas.
+
+Q3. What is `df.head()`?
+
+A: It displays the first five rows of the dataset by default.
+
+Q4. What is `df.info()`?
+
+A: It displays column names, data types, and non-null values.
+
+## 4. Data cleaning
+
+Your notebook uses:
+
+```
+df.drop(['BloodPressure', 'SkinThickness'],        axis=1, inplace=True)
+```
+
+It removes two columns:
+
+- BloodPressure
+- SkinThickness
+
+Viva questions
+
+Q1. What is data cleaning?
+
+A: Data cleaning is the process of identifying and handling incorrect, missing, or unwanted data.
+
+Q2. What is `axis=1`?
+
+A: It means we are performing an operation on columns.
+
+Q3. What is `inplace=True`?
+
+A: It modifies the original DataFrame directly.
+
+Q4. What is `df.isna().sum()`?
+
+A: It counts missing values in every column.
+
+Important: Your dataset has no null values, but some columns contain zero values, such as Glucose, Insulin and BMI. Your notebook does not replace these zero values.
+
+## 5. Data visualization
+
+Your code:
+
+```
+hist = df.hist(figsize=(20,16))
+```
+
+What is a histogram?
+
+A histogram is a graphical representation that shows the distribution of numerical data.
+
+[Frontiers | Machine learning-based strategies for improving healthcare data quality: an evaluation of accuracy, completeness, and reusability](https://images.openai.com/static-rsc-4/Zoidp58OwmRaDw9wsQVMX3TxhfUsJVZzRm3kCA0ExWWOWT_o3FE8bASXP5sskFwaDsevqmET1lr2B75w6rF-G7RU8wMjQUmZ0H9NrbAu51YjfuSdfq7Qko0A8pKrwJBblhIann_oROXWDa6gJJMagJaJgpVouoQ_IjgDCmweIgM?purpose=inline)
+
+[frontiersin.org](https://www.frontiersin.org/journals/artificial-intelligence/articles/10.3389/frai.2025.1621514/full?utm_source=chatgpt.com)
+
+Viva questions
+
+1. What is data visualization?
+
+   It is the graphical representation of data.
+2. Why do we use graphs?
+
+   To understand data patterns and distributions easily.
+3. Which library is used for plotting?
+
+   Matplotlib.
+
+## 6. Features and labels
+
+Your code:
+
+```
+X = df.iloc[:, :df.shape[1]-1]y = df.iloc[:, -1]
+```
+
+Explanation:
+
+- `X` contains independent variables (input features).
+- `y` contains the dependent variable (target/output).
+
+In your project:
+
+- X = Pregnancies, Glucose, Insulin, BMI, Pedigree, Age.
+- y = Outcome.
+
+Viva questions
+
+Q1. What are independent variables?
+
+A: Variables used to predict the output.
+
+Q2. What is a dependent variable?
+
+A: The variable whose value we want to predict.
+
+Q3. What is the target column?
+
+A: Outcome.
+
+## 7. Train-test splitting
+
+Your code:
+
+```
+X_train, X_test, y_train, y_test = train_test_split(    X, y, test_size=0.2, random_state=8)
+```
+
+Explanation:
+
+The dataset is divided into two parts:
+
+- 80% – Training data.
+- 20% – Testing data.
+
+[Yapay Zekâ Modelleri Neden %80 Eğitim %20 Test Verisiyle Eğitilir? | by Sanem Rumeysa KARA | Jan, 2026 | Medium](https://images.openai.com/static-rsc-4/zWQg-JFeDT4Juk2Cok7ZZ62Jm_60PWPHU778yQn0GnxsNkm6JDeQIJSGd_E_4O2dOP2DaMaixiJGU67eDQljYAAGJQx86FdnDRUNBsBoRUq_SWA04QrzWfpwyPKVbnYpihYuXWWl2Tj7NaD_AC_9AGfwAnhPE39JxTG_Q84QCWc?purpose=inline)
+
+[medium.com](https://medium.com/%40sanemmkara13/yapay-zek%C3%A2-modelleri-neden-80-e%C4%9Fitim-20-test-verisiyle-e%C4%9Fitilir-fac2a3fa705a?utm_source=chatgpt.com)
+
+Viva questions
+
+Q1. What is training data?
+
+A: Data used to train the machine learning model.
+
+Q2. What is testing data?
+
+A: Data used to evaluate the trained model.
+
+Q3. What is `test_size=0.2`?
+
+A: It means 20% of the dataset is used for testing.
+
+Q4. What is `random_state=8`?
+
+A: It ensures reproducible random splitting.
+
+## 8. StandardScaler
+
+Your code:
+
+```
+scaler = StandardScaler()X_train = scaler.fit_transform(X_train)X_test = scaler.transform(X_test)
+```
+
+Explanation:
+
+StandardScaler converts features into a common scale.
+
+It uses the formula:
+
+\\[ z = \frac{x-\mu}{\sigma} \\]
+
+Where:
+
+- x = Original value
+- μ = Mean
+- σ = Standard deviation
+
+Viva questions
+
+Q1. Why do we use StandardScaler?
+
+A: To bring features to a comparable scale.
+
+Q2. Why is scaling important in KNN?
+
+A: Because KNN uses distance calculations. Features with larger numerical ranges can dominate the distance.
+
+Q3. Difference between fit and transform?
+
+A:
+
+- Fit calculates the mean and standard deviation.
+- Transform applies scaling using those values.
+
+## 9. KNN algorithm (Most Important)
+
+Very Important for Viva
+
+Your project uses the K-Nearest Neighbors algorithm.
+
+[K-Nearest Neighbors (KNN): A Simple Yet Powerful Machine Learning Algorithm | by Balu Anil Kumar | Feb, 2026 | Medium](https://images.openai.com/static-rsc-4/WBq3W4JX7X-wizdNs6PyfAsmJXhNZWKUZOxGhIQ5khuD7mUVmb8aAYpnhSmQYlkggk5Xt4gfUCPnmEXVbZ-d9DY0ZFg3K8Tb-MoET04AHYpP3F1-3wcENMEiOzu9uBmKWFFw9TdIJin0pGMOFXJ5D-XXboPiyeWIG0rZ2mAoMlw?purpose=inline)
+
+[medium.com](https://medium.com/%40baluanilkumar777/k-nearest-neighbors-knn-a-simple-yet-powerful-machine-learning-algorithm-d5043ca512b6?utm_source=chatgpt.com)
+
+Definition:
+
+KNN is a supervised machine learning algorithm used for classification and regression.
+
+How does KNN work?
+
+1. Select the value of K.
+2. Calculate distances between data points.
+3. Find the K nearest neighbors.
+4. Check their classes.
+5. Predict the majority class.
+
+Viva questions
+
+Q1. What is KNN?
+
+A: KNN stands for K-Nearest Neighbors. It predicts the class based on the nearest data points.
+
+Q2. Is KNN supervised or unsupervised?
+
+A: Supervised learning.
+
+Q3. What is K in KNN?
+
+A: K represents the number of nearest neighbors considered for prediction.
+
+Q4. What happens if K is too small?
+
+A: The model may become sensitive to noise and overfit.
+
+Q5. What happens if K is too large?
+
+A: The model may underfit.
+
+Q6. What is Euclidean distance?
+
+A: It measures the straight-line distance between two points.
+
+\\[ d=\sqrt{\sum\_{i=1}^{n}(x_i-y_i)^2} \\]
+
+Q7. What is Manhattan distance?
+
+A: It calculates the sum of absolute differences between coordinates.
+
+## 10. Hyperparameter tuning
+
+Your notebook uses:
+
+```
+param_grid = {    'n_neighbors': range(1, 51),    'p': range(1, 4)}grid = GridSearchCV(    estimator=KNeighborsClassifier(),    param_grid=param_grid,    cv=5)
+```
+
+Explanation:
+
+GridSearchCV finds the best hyperparameters by testing different combinations.
+
+Your notebook tests:
+
+- K values from 1 to 50.
+- P values from 1 to 3.
+- 5-fold cross-validation.
+
+Viva questions
+
+Q1. What is hyperparameter tuning?
+
+A: It is the process of finding the best settings for a machine learning model.
+
+Q2. What is GridSearchCV?
+
+A: It tests different parameter combinations and selects the best one using cross-validation.
+
+Q3. What is cross-validation?
+
+A: It divides the training data into multiple parts to evaluate the model more reliably.
+
+Q4. What is the value of K selected in your project?
+
+A: 27.
+
+Q5. What is the selected P value?
+
+A: 2, which represents Euclidean distance in KNN.
+
+## 11. Model results
+
+Your Actual Notebook Results
+
+Your final output:
+
+Model accuracy
+
+# 79.87%
+
+Best parameters
+
+- K = 27
+- P = 2
+- Cross-validation score = 77.20%
+
+### Confusion matrix
+
+Your notebook gives:
+
+| Actual / Predicted | 0  | 1  |
+| ------------------ | -- | -- |
+| 0                  | 91 | 11 |
+| 1                  | 20 | 32 |
+
+Remember: The notebook's printed TP/TN labels are reversed for class 0. The correct interpretation for diabetes class 1 is:
+
+- TP = 32
+- TN = 91
+- FP = 11
+- FN = 20
+
+Viva questions
+
+Q1. What is accuracy?
+
+A: Accuracy measures the percentage of correct predictions.
+
+\\[ Accuracy=\frac{Correct\ Predictions}{Total\ Predictions}\times100 \\]
+
+Q2. What is a confusion matrix?
+
+A: It is a table used to evaluate classification model predictions.
+
+Q3. What is precision?
+
+A: Precision measures how many positive predictions are actually positive.
+
+Q4. What is recall?
+
+A: Recall measures how many actual positive cases are correctly identified.
+
+Q5. What is F1-score?
+
+A: It is the harmonic mean of precision and recall.
+
+## 12. Top 15 important viva questions – Quick revision
+
+| Question                     | Answer              |
+| ---------------------------- | ------------------- |
+| 1. Full form of KNN?         | K-Nearest Neighbors |
+| 2. Type of learning?         | Supervised          |
+| 3. Target column?            | Outcome             |
+| 4. Total records?            | 768                 |
+| 5. Original features?        | 8                   |
+| 6. Final input features?     | 6                   |
+| 7. Test data percentage?     | 20%                 |
+| 8. Training data percentage? | 80%                 |
+| 9. Scaling technique?        | StandardScaler      |
+| 10. Tuning method?           | GridSearchCV        |
+| 11. Cross-validation?        | 5-fold              |
+| 12. Best K value?            | 27                  |
+| 13. Best P value?            | 2                   |
+| 14. Final accuracy?          | 79.87%              |
+| 15. Target output?           | 0 or 1              |
+
+## 13. Let's practice your viva
+
+I'll ask questions like an external examiner. Answer them, and I'll check your answer and explain corrections.
+
+Viva Mock Test
+
+Question 1 of 5
+
+What is the main objective of your project?
+
+To predict diabetes using patient data
+
+To detect face recognition
+
+To predict house prices
+
+To analyze images
+
+Check answerNext
+
+My suggestion: First understand KNN, StandardScaler, GridSearchCV, confusion matrix, and accuracy. These are the most important topics your external examiner can ask from this practical.
